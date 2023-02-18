@@ -1,30 +1,121 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import ChatGptAvatar from './components/ChatGptAvatar.vue';
+
+export default {
+  components: {
+    ChatGptAvatar,
+  },
+};
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <aside class="side-bar">
+    <button type="button" class="btn-new-chat">New Chat</button>
+  </aside>
+  <section class="chat-section">
+    <div class="chat-flow-area">
+      <div class="chat-message-item">
+        <div class="chat-message-avatar">me</div>
+        <div class="chat-message-content">who are you by the way?</div>
+      </div>
+      <div class="chat-message-item ai-answered">
+        <div class="chat-message-avatar">
+          <ChatGptAvatar />
+        </div>
+        <div class="chat-message-content">i am an AI.</div>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <textarea
+        rows="1"
+        class="chat-textarea"
+        name="chatInputHolder"
+        id="chatInputHolder"></textarea>
+    </div>
+  </section>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.side-bar {
+  width: 260px;
+  background-color: rgba(32, 33, 35, 1);
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.btn-new-chat {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+  color: #fff;
+  display: block;
+  height: 3rem;
+  text-align: left;
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  transition: all 200ms ease;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.btn-new-chat::before {
+  content: '+ ';
+  font-size: 1.1rem;
+}
+.btn-new-chat:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.chat-section {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template: 2fr / 1fr;
+}
+.chat-input-area {
+  width: 48rem;
+  background-color: rgba(64, 65, 79, 1);
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  box-shadow: 0 0.25rem 0.35rem rgba(0, 0, 0, 0.25);
+  margin: 0 auto 1.5rem;
+}
+.chat-textarea {
+  display: flex;
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  outline: transparent;
+  font-size: 1.25rem;
+  color: #fff;
+  resize: vertical;
+}
+.chat-flow-area {
+  /* display: flex;
+  flex-direction: column; */
+}
+.chat-message-item {
+  display: flex;
+  padding: 1.5rem 3rem;
+  gap: 1rem;
+  justify-content: center;
+}
+.chat-message-avatar {
+  border-radius: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: aliceblue;
+}
+.chat-message-content {
+  flex: 0 0 44.5rem;
+  color: #fff;
+}
+.chat-message-item.ai-answered {
+  background-color: rgba(68, 70, 84, 1);
+}
+.chat-message-item.ai-answered .chat-message-avatar {
+  padding: 0.5rem;
+  background-color: rgb(16, 163, 127);
+}
+.chat-message-item.ai-answered svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 </style>
