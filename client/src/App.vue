@@ -5,6 +5,25 @@ export default {
   components: {
     ChatGptAvatar,
   },
+  data() {
+    return {
+      chatInput: '',
+      chatLog: [],
+    };
+  },
+  updated() {
+    console.log(this.chatLog);
+  },
+  methods: {
+    async handleSubmit(e) {
+      console.log('this is submitted');
+      this.chatLog = [...this.chatLog, { user: 'me', message: this.chatInput }];
+      this.chatInput = '';
+    },
+    handleChatInputChange(e) {
+      this.chatInput = e.target.value;
+    },
+  },
 };
 </script>
 
@@ -26,11 +45,14 @@ export default {
       </div>
     </div>
     <div class="chat-input-area">
-      <textarea
-        rows="1"
-        class="chat-textarea"
-        name="chatInputHolder"
-        id="chatInputHolder"></textarea>
+      <form action="" @submit.prevent="handleSubmit">
+        <input
+          class="chat-textarea"
+          name="chatInputHolder"
+          id="chatInputHolder"
+          @change="handleChatInputChange"
+          :value="chatInput" />
+      </form>
     </div>
   </section>
 </template>
