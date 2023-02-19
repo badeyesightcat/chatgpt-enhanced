@@ -35,13 +35,8 @@ export default {
   </aside>
   <section class="chat-section">
     <div class="chat-flow-area">
-      <ChatMessageItem message="message" />
-      <div class="chat-message-item ai-answered">
-        <div class="chat-message-avatar">
-          <ChatGptAvatar />
-        </div>
-        <div class="chat-message-content">i am an AI.</div>
-      </div>
+      <ChatMessageItem content="message" author="user" />
+      <ChatMessageItem content="message" author="ai" />
     </div>
     <div class="chat-input-area">
       <form action="" @submit.prevent="handleSubmit">
@@ -109,32 +104,5 @@ export default {
   resize: vertical;
 }
 .chat-flow-area {
-}
-.chat-message-item {
-  display: flex;
-  padding: 1.5rem 3rem;
-  gap: 1rem;
-  justify-content: center;
-}
-.chat-message-avatar {
-  border-radius: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: aliceblue;
-}
-.chat-message-content {
-  flex: 0 0 44.5rem;
-  color: #fff;
-}
-.chat-message-item.ai-answered {
-  background-color: rgba(68, 70, 84, 1);
-}
-.chat-message-item.ai-answered .chat-message-avatar {
-  padding: 0.5rem;
-  background-color: rgb(16, 163, 127);
-}
-.chat-message-item.ai-answered svg {
-  width: 1.5rem;
-  height: 1.5rem;
 }
 </style>
