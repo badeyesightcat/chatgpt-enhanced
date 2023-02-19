@@ -10,7 +10,16 @@ export default {
   data() {
     return {
       chatInput: '',
-      chatLog: [],
+      chatLog: [
+        {
+          user: 'ai',
+          message: 'How can I help you?',
+        },
+        {
+          user: 'me',
+          message: 'Who are you by the way?',
+        },
+      ],
     };
   },
   updated() {
@@ -35,8 +44,10 @@ export default {
   </aside>
   <section class="chat-section">
     <div class="chat-flow-area">
-      <ChatMessageItem content="message" author="user" />
-      <ChatMessageItem content="message" author="ai" />
+      <ChatMessageItem
+        v-for="(item, index) in chatLog"
+        :key="index"
+        :content="item" />
     </div>
     <div class="chat-input-area">
       <form action="" @submit.prevent="handleSubmit">
