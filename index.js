@@ -13,15 +13,21 @@ const app = express();
 const port = 3000;
 
 app.post('/', async (req, res) => {
-  const response = await openai.createCompletion({
-    model: 'text-davinci-003',
-    prompt: 'Say this is a test',
-    max_tokens: 7,
-    temperature: 0,
-  });
-  console.log(response);
+  // const response = await openai.createCompletion({
+  //   model: 'text-davinci-003',
+  //   prompt: 'Say this is a test',
+  //   max_tokens: 7,
+  //   temperature: 0,
+  // });
+  // console.log(response);
+  // res.json({
+  //   data: response.data,
+  // });
+
+  const { message } = req.body;
+  console.log(message);
   res.json({
-    data: response.data,
+    data: message,
   });
 });
 
