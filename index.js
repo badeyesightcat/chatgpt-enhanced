@@ -17,22 +17,22 @@ app.use(cors());
 const port = 3000;
 
 app.post('/', async (req, res) => {
-  // const response = await openai.createCompletion({
-  //   model: 'text-davinci-003',
-  //   prompt: 'Say this is a test',
-  //   max_tokens: 7,
-  //   temperature: 0,
-  // });
-  // console.log(response);
-  // res.json({
-  //   data: response.data,
-  // });
-
   const { message } = req.body;
-  console.log(message);
-  res.json({
-    data: message,
+  const response = await openai.createCompletion({
+    model: 'text-davinci-003',
+    prompt: `${message}`,
+    max_tokens: 100,
+    temperature: 0.5,
   });
+  res.json({
+    message: response.data.choices[0].text,
+  });
+
+  // const { message } = req.body;
+  // console.log(message);
+  // res.json({
+  //   data: message,
+  // });
 });
 
 app.listen(port, () => {
