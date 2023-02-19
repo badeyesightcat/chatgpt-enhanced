@@ -1,10 +1,8 @@
 <script>
-import ChatGptAvatar from './components/ChatGptAvatar.vue';
 import ChatMessageItem from './components/ChatMessageItem.vue';
 
 export default {
   components: {
-    ChatGptAvatar,
     ChatMessageItem,
   },
   data() {
@@ -114,6 +112,5 @@ export default {
   color: #fff;
   resize: vertical;
 }
-.chat-flow-area {
-}
+/* .chat-flow-area {} */
 </style>
