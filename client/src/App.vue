@@ -1,9 +1,11 @@
 <script>
 import ChatGptAvatar from './components/ChatGptAvatar.vue';
+import ChatMessageItem from './components/ChatMessageItem.vue';
 
 export default {
   components: {
     ChatGptAvatar,
+    ChatMessageItem,
   },
   data() {
     return {
@@ -33,10 +35,7 @@ export default {
   </aside>
   <section class="chat-section">
     <div class="chat-flow-area">
-      <div class="chat-message-item">
-        <div class="chat-message-avatar">me</div>
-        <div class="chat-message-content">who are you by the way?</div>
-      </div>
+      <ChatMessageItem message="message" />
       <div class="chat-message-item ai-answered">
         <div class="chat-message-avatar">
           <ChatGptAvatar />
@@ -110,8 +109,6 @@ export default {
   resize: vertical;
 }
 .chat-flow-area {
-  /* display: flex;
-  flex-direction: column; */
 }
 .chat-message-item {
   display: flex;
