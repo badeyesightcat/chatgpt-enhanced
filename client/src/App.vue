@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     async handleSubmit(e) {
-      console.log('this is submitted');
       this.chatLog = [...this.chatLog, { user: 'me', message: this.chatInput }];
       this.chatInput = '';
 
@@ -40,7 +39,8 @@ export default {
         }),
       });
       const data = await response.json();
-      console.log(data);
+      console.log(data.message);
+      this.chatLog = [...this.chatLog, { user: 'ai', message: data.message }];
     },
     handleChatInputChange(e) {
       this.chatInput = e.target.value;
@@ -103,7 +103,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.1);
 }
 .chat-section {
-  flex: 1 1 auto;
+  flex: 0 0 calc(100% - 260px);
   display: grid;
   grid-template: 2fr / 1fr;
 }
@@ -113,7 +113,7 @@ export default {
   border-radius: 0.25rem;
   padding: 0.5rem;
   box-shadow: 0 0.25rem 0.35rem rgba(0, 0, 0, 0.25);
-  margin: 0 auto 1.5rem;
+  margin: 1.5rem auto;
 }
 .chat-textarea {
   display: flex;
@@ -125,5 +125,8 @@ export default {
   color: #fff;
   resize: vertical;
 }
-/* .chat-flow-area {} */
+.chat-flow-area {
+  height: calc(100vh - 5.5rem);
+  overflow-y: auto;
+}
 </style>
