@@ -9,14 +9,14 @@ export default {
     return {
       chatInput: '',
       chatLog: [
-        {
-          user: 'ai',
-          message: 'How can I help you?',
-        },
-        {
-          user: 'me',
-          message: 'Who are you by the way?',
-        },
+        // {
+        //   user: 'ai',
+        //   message: 'How can I help you?',
+        // },
+        // {
+        //   user: 'me',
+        //   message: 'Who are you by the way?',
+        // },
       ],
     };
   },
@@ -45,13 +45,18 @@ export default {
     handleChatInputChange(e) {
       this.chatInput = e.target.value;
     },
+    handleClearChatLog() {
+      this.chatLog = [];
+    },
   },
 };
 </script>
 
 <template>
   <aside class="side-bar">
-    <button type="button" class="btn-new-chat">New Chat</button>
+    <button type="button" class="btn-new-chat" @click="handleClearChatLog">
+      New Chat
+    </button>
   </aside>
   <section class="chat-section">
     <div class="chat-flow-area">
