@@ -1,11 +1,13 @@
 <template>
-  <div class="chat-message-item" :class="author === 'ai' && 'ai-answered'">
+  <div
+    class="chat-message-item"
+    :class="content.user === 'ai' && 'ai-answered'">
     <div class="chat-message-avatar">
-      <ChatGptAvatar v-if="author === 'ai'" />
+      <ChatGptAvatar v-if="content.user === 'ai'" />
       <template v-else>me</template>
     </div>
     <div class="chat-message-content">
-      {{ author === 'ai' ? 'I am an AI' : 'who are you by the way?' }}
+      {{ content.message }}
     </div>
   </div>
 </template>
@@ -24,10 +26,6 @@ export default {
         avatar: String,
         message: String,
       }),
-    },
-    author: {
-      type: String,
-      default: '',
     },
   },
 };
