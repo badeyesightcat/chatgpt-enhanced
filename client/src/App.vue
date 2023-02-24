@@ -69,8 +69,6 @@ export default {
       <form action="" @submit.prevent="handleSubmit">
         <input
           class="chat-textarea"
-          name="chatInputHolder"
-          id="chatInputHolder"
           @change="handleChatInputChange"
           :value="chatInput" />
       </form>
